@@ -23,11 +23,11 @@ const schema = new GraphQLSchema({
 });
 
 
-app.use((req, res, next) => {
-  graphql.getGraphQLParams(req).then(params => {
-    console.log(params);
-    next();
-  });
+app.use(async (req, res, next) => {
+  // just comment out this line to see the request being successful
+  const params = await graphql.getGraphQLParams(req);
+  console.log(params);
+  next();
 });
 
 app.use(
